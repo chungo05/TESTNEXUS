@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 280px; max-height: 350px; }
         @media (min-width: 768px) { .chart-container { height: 350px; } }
         .nav-link.active { background-color: #0284c7; color: white; }
         .tab-button.active { border-color: #0ea5e9; color: #0ea5e9; background-color: #f0f9ff; }
@@ -25,7 +25,7 @@
 
 <div class="flex">
     <!-- Desktop Navigation -->
-    <nav id="desktop-nav" class="hidden lg:block w-64 bg-white h-screen sticky top-0 p-6 border-r border-slate-200">
+    <nav id="desktop-nav" class="hidden lg:block w-64 bg-white h-screen sticky top-0 p-6 border-r border-slate-200 shrink-0">
         <div class="flex items-center gap-3 mb-8">
             <div class="bg-sky-600 p-2 rounded-lg">
                 <i data-lucide="shield-check" class="text-white"></i>
@@ -42,55 +42,57 @@
     </nav>
 
     <!-- Main content -->
-    <main class="flex-1">
+    <main class="flex-1 w-full overflow-x-hidden">
         <!-- Mobile Navigation -->
-        <nav class="lg:hidden bg-white p-4 border-b border-slate-200 sticky top-0 z-10 flex justify-between items-center">
-             <div class="flex items-center gap-3">
-                <div class="bg-sky-600 p-2 rounded-lg">
-                    <i data-lucide="shield-check" class="text-white"></i>
+        <div class="lg:hidden sticky top-0 z-20 bg-white shadow-sm">
+            <nav class="p-4 border-b border-slate-200 flex justify-between items-center">
+                 <div class="flex items-center gap-3">
+                    <div class="bg-sky-600 p-2 rounded-lg">
+                        <i data-lucide="shield-check" class="text-white"></i>
+                    </div>
+                    <h1 class="text-lg font-bold text-slate-800">Nexus Software</h1>
                 </div>
-                <h1 class="text-lg font-bold text-slate-800">Nexus Software</h1>
+                <button id="mobile-menu-button" class="p-2">
+                    <i data-lucide="menu"></i>
+                </button>
+            </nav>
+            <div id="mobile-menu" class="hidden p-4 border-b border-slate-200">
+                 <ul class="space-y-2">
+                    <li><a href="#desafio" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="alert-triangle" class="w-5 h-5"></i>El Desafío</a></li>
+                    <li><a href="#solucion" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="sparkles" class="w-5 h-5"></i>La Solución</a></li>
+                    <li><a href="#pilares" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="columns" class="w-5 h-5"></i>Pilares Estratégicos</a></li>
+                    <li><a href="#flujo" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="workflow" class="w-5 h-5"></i>Flujo de Aprobación</a></li>
+                    <li><a href="#siguientes-pasos" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="move-right" class="w-5 h-5"></i>Siguientes Pasos</a></li>
+                </ul>
             </div>
-            <button id="mobile-menu-button" class="p-2">
-                <i data-lucide="menu"></i>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white p-4 border-b border-slate-200">
-             <ul class="space-y-2">
-                <li><a href="#desafio" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="alert-triangle" class="w-5 h-5"></i>El Desafío</a></li>
-                <li><a href="#solucion" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="sparkles" class="w-5 h-5"></i>La Solución</a></li>
-                <li><a href="#pilares" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="columns" class="w-5 h-5"></i>Pilares Estratégicos</a></li>
-                <li><a href="#flujo" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="workflow" class="w-5 h-5"></i>Flujo de Aprobación</a></li>
-                <li><a href="#siguientes-pasos" class="nav-link mobile-link flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-slate-600 hover:bg-slate-100 transition-colors"> <i data-lucide="move-right" class="w-5 h-5"></i>Siguientes Pasos</a></li>
-            </ul>
         </div>
 
         <!-- Hero Section -->
         <header class="bg-white">
-            <div class="max-w-5xl mx-auto px-6 py-20 text-center">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
                 <span class="text-sky-600 font-semibold">PROPUESTA DE DESARROLLO</span>
-                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4">Sistema de Gestión de Créditos (SGC)</h1>
-                <p class="mt-6 text-lg max-w-3xl mx-auto text-slate-600">Una solución estratégica para optimizar radicalmente el proceso de aprobación y seguimiento, transformando la eficiencia operativa y la toma de decisiones del banco.</p>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-4">Sistema de Gestión de Créditos (SGC)</h1>
+                <p class="mt-6 text-base sm:text-lg max-w-3xl mx-auto text-slate-600">Una solución estratégica para optimizar radicalmente el proceso de aprobación y seguimiento, transformando la eficiencia operativa y la toma de decisiones del banco.</p>
             </div>
         </header>
 
-        <div class="max-w-5xl mx-auto p-6 space-y-24">
+        <div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-20 md:space-y-24">
             <!-- The Challenge -->
             <section id="desafio">
-                <h2 class="text-3xl font-bold text-center text-slate-800">El Desafío Actual: Un Ecosistema Fragmentado</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center text-slate-800">El Desafío Actual: Un Ecosistema Fragmentado</h2>
                 <p class="text-center mt-4 max-w-2xl mx-auto">El proceso actual depende de herramientas no especializadas que crean cuellos de botella, aumentan el riesgo y limitan la visibilidad estratégica. A continuación, detallamos los problemas clave que nuestra solución busca resolver.</p>
-                <div class="mt-12 grid md:grid-cols-2 gap-8">
+                <div class="mt-12 grid md:grid-cols-2 gap-6 md:gap-8">
                     <div class="bg-white p-6 rounded-xl border border-slate-200">
                         <div class="flex items-center gap-4">
                             <div class="bg-rose-100 p-3 rounded-lg"><i data-lucide="file-spreadsheet" class="text-rose-600"></i></div>
-                            <h3 class="text-xl font-semibold text-slate-800">Dependencia de Hojas de Cálculo</h3>
+                            <h3 class="text-lg sm:text-xl font-semibold text-slate-800">Dependencia de Hojas de Cálculo</h3>
                         </div>
                         <p class="mt-4 text-slate-600">Generan inconsistencia de datos, un alto riesgo de errores humanos y un completo descontrol de versiones, creando confusión sobre cuál es la información verídica.</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl border border-slate-200">
                         <div class="flex items-center gap-4">
                             <div class="bg-rose-100 p-3 rounded-lg"><i data-lucide="mail-warning" class="text-rose-600"></i></div>
-                            <h3 class="text-xl font-semibold text-slate-800">Comunicación por Email</h3>
+                            <h3 class="text-lg sm:text-xl font-semibold text-slate-800">Comunicación por Email</h3>
                         </div>
                         <p class="mt-4 text-slate-600">Provoca pérdida de trazabilidad, crea vulnerabilidades de seguridad con datos sensibles y la información queda "atrapada" en bandejas de entrada, causando retrasos.</p>
                     </div>
@@ -103,42 +105,42 @@
 
             <!-- The Solution -->
             <section id="solucion" class="text-center">
-                <h2 class="text-3xl font-bold text-slate-800">La Solución: El Sistema SGC</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">La Solución: El Sistema SGC</h2>
                  <p class="mt-4 max-w-2xl mx-auto">Proponemos una aplicación web centralizada y a medida, diseñada para ser la **única fuente de verdad** para todo el ciclo de vida de los créditos empresariales, desde la solicitud inicial hasta la aprobación final y el seguimiento.</p>
-                <div class="mt-12 bg-sky-600 text-white p-8 rounded-xl shadow-lg shadow-sky-200">
+                <div class="mt-12 bg-sky-600 text-white p-6 sm:p-8 rounded-xl shadow-lg shadow-sky-200">
                      <i data-lucide="check-circle" class="mx-auto h-12 w-12"></i>
-                    <h3 class="mt-6 text-2xl font-bold">Una Plataforma Integral y Segura</h3>
+                    <h3 class="mt-6 text-xl sm:text-2xl font-bold">Una Plataforma Integral y Segura</h3>
                     <p class="mt-4 max-w-xl mx-auto">El SGC consolida datos, documentos y comunicaciones en un entorno seguro y accesible, garantizando que todos los usuarios trabajen con información consistente y en tiempo real.</p>
                 </div>
             </section>
 
             <!-- Strategic Pillars -->
             <section id="pilares">
-                <h2 class="text-3xl font-bold text-center text-slate-800">Pilares Estratégicos del SGC</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center text-slate-800">Pilares Estratégicos del SGC</h2>
                 <p class="text-center mt-4 max-w-2xl mx-auto">Nuestra solución se fundamenta en cuatro pilares que transforman los problemas actuales en ventajas competitivas. Interactúe con las pestañas para explorar cada pilar en detalle.</p>
                 <div class="mt-12">
-                    <div class="flex justify-center border-b border-slate-200 mb-6 space-x-2 md:space-x-4">
-                        <button class="tab-button active flex-1 md:flex-none text-sm md:text-base flex items-center justify-center gap-2 px-4 py-3 border-b-2 font-semibold transition-colors" data-tab="centralizacion"> <i data-lucide="database"></i>Centralización</button>
-                        <button class="tab-button flex-1 md:flex-none text-sm md:text-base flex items-center justify-center gap-2 px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="transparencia"> <i data-lucide="eye"></i>Transparencia</button>
-                        <button class="tab-button flex-1 md:flex-none text-sm md:text-base flex items-center justify-center gap-2 px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="inteligencia"> <i data-lucide="bar-chart-2"></i>Inteligencia</button>
-                        <button class="tab-button flex-1 md:flex-none text-sm md:text-base flex items-center justify-center gap-2 px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="seguridad"> <i data-lucide="lock"></i>Seguridad</button>
+                    <div class="flex justify-center border-b border-slate-200 mb-6 space-x-1 sm:space-x-2 md:space-x-4">
+                        <button class="tab-button active flex-1 md:flex-none text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 px-3 sm:px-4 py-3 border-b-2 font-semibold transition-colors" data-tab="centralizacion"> <i data-lucide="database"></i>Centralización</button>
+                        <button class="tab-button flex-1 md:flex-none text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 px-3 sm:px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="transparencia"> <i data-lucide="eye"></i>Transparencia</button>
+                        <button class="tab-button flex-1 md:flex-none text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 px-3 sm:px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="inteligencia"> <i data-lucide="bar-chart-2"></i>Inteligencia</button>
+                        <button class="tab-button flex-1 md:flex-none text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 px-3 sm:px-4 py-3 border-b-2 font-semibold text-slate-500 border-transparent transition-colors" data-tab="seguridad"> <i data-lucide="lock"></i>Seguridad</button>
                     </div>
-                    <div class="bg-white p-8 rounded-xl border border-slate-200 min-h-[250px]">
+                    <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 min-h-[280px] sm:min-h-[250px]">
                         <div id="centralizacion" class="tab-content">
-                            <h3 class="text-2xl font-bold text-slate-800">1. Centralización como Única Fuente de Verdad</h3>
-                            <p class="mt-4 text-lg">Elimina los silos de información. Todos los involucrados, desde asesores hasta directivos, trabajan con los mismos datos actualizados en tiempo real. Esto reduce drásticamente los errores por inconsistencia y elimina la ambigüedad en la toma de decisiones.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-800">1. Centralización como Única Fuente de Verdad</h3>
+                            <p class="mt-4 text-base sm:text-lg">Elimina los silos de información. Todos los involucrados, desde asesores hasta directivos, trabajan con los mismos datos actualizados en tiempo real. Esto reduce drásticamente los errores por inconsistencia y elimina la ambigüedad en la toma de decisiones.</p>
                         </div>
                         <div id="transparencia" class="tab-content hidden">
-                            <h3 class="text-2xl font-bold text-slate-800">2. Transparencia y Trazabilidad Total</h3>
-                            <p class="mt-4 text-lg">Se crea una bitácora digital inalterable para cada solicitud. El sistema registra automáticamente cada paso, responsable, fecha y hora, facilitando el seguimiento diario y proporcionando un registro robusto crucial para auditorías y cumplimiento normativo.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-800">2. Transparencia y Trazabilidad Total</h3>
+                            <p class="mt-4 text-base sm:text-lg">Se crea una bitácora digital inalterable para cada solicitud. El sistema registra automáticamente cada paso, responsable, fecha y hora, facilitando el seguimiento diario y proporcionando un registro robusto crucial para auditorías y cumplimiento normativo.</p>
                         </div>
                         <div id="inteligencia" class="tab-content hidden">
-                            <h3 class="text-2xl font-bold text-slate-800">3. Inteligencia de Negocio para Decisiones Estratégicas</h3>
-                             <p class="mt-4 text-lg">El dashboard y los reportes convierten datos operativos en conocimiento accionable. Permite identificar cuellos de botella en el proceso, medir el desempeño por sucursal o asesor, y analizar tendencias para una gestión proactiva y basada en datos.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-800">3. Inteligencia de Negocio para Decisiones Estratégicas</h3>
+                             <p class="mt-4 text-base sm:text-lg">El dashboard y los reportes convierten datos operativos en conocimiento accionable. Permite identificar cuellos de botella en el proceso, medir el desempeño por sucursal o asesor, y analizar tendencias para una gestión proactiva y basada en datos.</p>
                         </div>
                         <div id="seguridad" class="tab-content hidden">
-                            <h3 class="text-2xl font-bold text-slate-800">4. Arquitectura Robusta de Seguridad y Escalabilidad</h3>
-                            <p class="mt-4 text-lg">Diseñado con seguridad de grado bancario, incluyendo acceso basado en roles (RBAC) y cifrado de datos sensibles. Su arquitectura escalable está preparada para crecer junto con el banco, protegiendo la inversión a futuro.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-800">4. Arquitectura Robusta de Seguridad y Escalabilidad</h3>
+                            <p class="mt-4 text-base sm:text-lg">Diseñado con seguridad de grado bancario, incluyendo acceso basado en roles (RBAC) y cifrado de datos sensibles. Su arquitectura escalable está preparada para crecer junto con el banco, protegiendo la inversión a futuro.</p>
                         </div>
                     </div>
                 </div>
@@ -148,27 +150,27 @@
             <section id="flujo">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Visualizando el Flujo de Aprobación</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Visualizando el Flujo de Aprobación</h2>
                         <p class="mt-4">El SGC estructura el proceso en un flujo claro y automatizado. Cada etapa se registra con responsable y fecha, eliminando la incertidumbre. Haga clic en cada paso para ver más detalles.</p>
                         <div id="workflow-container" class="mt-8 space-y-4">
                             <div class="workflow-step active p-4 border-2 border-slate-200 rounded-lg cursor-pointer transition-all" data-workflow="asesor">
-                                <h4 class="font-semibold text-lg">1. Asesor: Registro de Solicitud</h4>
+                                <h4 class="font-semibold text-base sm:text-lg">1. Asesor: Registro de Solicitud</h4>
                             </div>
                              <div class="text-center"><i data-lucide="arrow-down" class="text-slate-400"></i></div>
                             <div class="workflow-step p-4 border-2 border-slate-200 rounded-lg cursor-pointer transition-all" data-workflow="analista">
-                                <h4 class="font-semibold text-lg">2. Analista: Evaluación de Riesgo</h4>
+                                <h4 class="font-semibold text-base sm:text-lg">2. Analista: Evaluación de Riesgo</h4>
                             </div>
                              <div class="text-center"><i data-lucide="arrow-down" class="text-slate-400"></i></div>
                             <div class="workflow-step p-4 border-2 border-slate-200 rounded-lg cursor-pointer transition-all" data-workflow="comite">
-                                <h4 class="font-semibold text-lg">3. Comité: Decisión Final</h4>
+                                <h4 class="font-semibold text-base sm:text-lg">3. Comité: Decisión Final</h4>
                             </div>
                         </div>
-                        <div id="workflow-details" class="mt-6 bg-sky-50 p-6 rounded-lg min-h-[100px]">
+                        <div id="workflow-details" class="mt-6 bg-sky-50 p-6 rounded-lg min-h-[120px] sm:min-h-[100px]">
                             <p id="workflow-text" class="text-sky-800">El asesor ingresa los datos del cliente, la información del crédito y adjunta toda la documentación requerida en el sistema centralizado.</p>
                         </div>
                     </div>
                     <div>
-                         <h2 class="text-3xl font-bold text-slate-800">Panel de Control en Tiempo Real</h2>
+                         <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Panel de Control en Tiempo Real</h2>
                         <p class="mt-4">Los directivos obtienen visibilidad instantánea del estado de la cartera a través de un dashboard interactivo, permitiendo un seguimiento eficaz y decisiones ágiles.</p>
                          <div class="mt-8 bg-white p-6 rounded-xl border border-slate-200">
                              <h3 class="text-center font-semibold mb-4">Estado de Solicitudes (Ejemplo)</h3>
@@ -181,29 +183,174 @@
             </section>
 
             <!-- Next Steps -->
-            <section id="siguientes-pasos" class="bg-white p-10 rounded-xl border border-slate-200">
+            <section id="siguientes-pasos" class="bg-white p-6 md:p-10 rounded-xl border border-slate-200">
                 <div class="text-center">
                     <i data-lucide="flag" class="mx-auto h-12 w-12 text-sky-600"></i>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-6">Siguientes Pasos</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mt-6">Siguientes Pasos</h2>
                     <p class="mt-4 max-w-2xl mx-auto">Para avanzar con esta iniciativa y materializar los beneficios para el banco, proponemos el siguiente plan de acción.</p>
                     <div class="mt-10 grid md:grid-cols-3 gap-8 text-left">
-                        <div class="relative">
+                        <div class="relative pt-4">
                             <div class="absolute -left-4 top-2 h-10 w-10 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center font-bold text-xl">1</div>
                             <h3 class="ml-10 font-semibold text-lg">Reunión de Profundización</h3>
                             <p class="ml-10 mt-2">Agendar una sesión de trabajo para analizar a fondo cada requerimiento funcional y no funcional.</p>
                         </div>
-                        <div class="relative">
+                        <div class="relative pt-4">
                             <div class="absolute -left-4 top-2 h-10 w-10 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center font-bold text-xl">2</div>
                             <h3 class="ml-10 font-semibold text-lg">Definición de Alcance</h3>
                             <p class="ml-10 mt-2">Crear un documento detallado con el alcance final del proyecto, estableciendo prioridades y entregables.</p>
                         </div>
-                        <div class="relative">
+                        <div class="relative pt-4">
                             <div class="absolute -left-4 top-2 h-10 w-10 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center font-bold text-xl">3</div>
                             <h3 class="ml-10 font-semibold text-lg">Propuesta Formal</h3>
                             <p class="ml-10 mt-2">Presentar un plan de trabajo con cronograma y una cotización detallada y transparente.</p>
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
+        
+        <footer class="bg-slate-800 text-white text-center p-8 mt-16">
+            <h3 class="text-xl font-bold">Nexus Software</h3>
+            <p class="text-slate-300 mt-2 italic">Conectando tus operaciones, impulsando tu futuro.</p>
+        </footer>
+    </main>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    // Data for charts and interactions
+    const workflowData = {
+        asesor: 'El asesor ingresa los datos del cliente, la información del crédito y adjunta toda la documentación requerida en el sistema centralizado.',
+        analista: 'El analista revisa la solicitud completa, verifica la documentación, evalúa el riesgo crediticio y emite una recomendación.',
+        comite: 'El comité de crédito revisa el caso con la recomendación del analista y toma la decisión final de aprobar o rechazar la solicitud.'
+    };
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+             mobileMenu.classList.add('hidden');
+        });
+    });
+
+
+    // Tabbed interface for Pillars
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const tabId = button.dataset.tab;
+            tabContents.forEach(content => {
+                if (content.id === tabId) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Workflow Interaction
+    const workflowSteps = document.querySelectorAll('.workflow-step');
+    const workflowText = document.getElementById('workflow-text');
+
+    workflowSteps.forEach(step => {
+        step.addEventListener('click', () => {
+            workflowSteps.forEach(s => s.classList.remove('active'));
+            step.classList.add('active');
+
+            const workflowId = step.dataset.workflow;
+            workflowText.textContent = workflowData[workflowId];
+        });
+    });
+
+    // Chart.js Donut Chart
+    const ctx = document.getElementById('statusChart').getContext('2d');
+    const statusChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Nuevas', 'En Análisis', 'Aprobadas', 'Rechazadas'],
+            datasets: [{
+                label: 'Estado de Solicitudes',
+                data: [15, 28, 45, 8],
+                backgroundColor: [
+                    '#38bdf8', // sky-400
+                    '#fb923c', // orange-400
+                    '#4ade80', // green-400
+                    '#f87171'  // red-400
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed + ' solicitudes';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // Active Nav Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+</script>
+
+</body>
+</html>
+
             </section>
         </div>
         
